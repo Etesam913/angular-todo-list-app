@@ -1,5 +1,26 @@
-<ul class="todo-list-container">
-    @for (todo of todos; track todo.id) {
-        <app-todo-item [todo]="todo" (updateTodoEvent)="updateTodo($event)" />
-    }
-</ul>
+<div class="todo-list-container">
+    <ul class="todo-list">
+        @for (todo of todos; track todo.id) {
+            <app-todo-item
+                [todo]="todo"
+                (updateTodoEvent)="updateTodo($event)"
+            />
+        }
+    </ul>
+    <form
+        class="add-todo-form"
+        [formGroup]="newTodoForm"
+        (ngSubmit)="handleNewTodoSubmit()"
+    >
+        <fieldset>
+            <label for="todo-title">Todo Title:</label>
+            <input type="text" id="todo-title" formControlName="todoTitle" />
+        </fieldset>
+        <fieldset>
+            <label for="todo-description">Todo Description:</label>
+            <textarea id="todo-description" formControlName="todoDescription">
+            </textarea>
+        </fieldset>
+        <button type="submit">Add Todo</button>
+    </form>
+</div>

@@ -3,5 +3,13 @@
     gap: 1rem;
     background-color: #f2f0f0;
     padding: 1rem;
-    max-width: 25rem;
+}
+
+.completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 0.15rem;
+}
+
+.fullscreen-button {
+    margin-left: auto;
 }

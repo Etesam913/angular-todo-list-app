@@ -9,7 +9,6 @@ import {
   OnInit,
   Output,
   ViewChild,
-  viewChild,
 } from "@angular/core";
 import { TodoItem } from "../todo-list/todo-list.component";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
@@ -28,17 +27,19 @@ export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild("editInput") editInput!: ElementRef;
 
   isChecked = new FormControl(false);
+  title = new FormControl("");
   private isCheckedSubscription: Subscription | undefined;
 
   isEditing = false;
 
   ngOnInit(): void {
     this.isChecked.setValue(this.todo.checked);
+    this.title.setValue(this.todo.title);
+
     this.isCheckedSubscription = this.isChecked.valueChanges.subscribe(
       (newChecked) => {
         if (newChecked !== null) {
           this.todo.checked = newChecked;
-
           this.updateTodoEvent.emit(this.todo);
         }
       },
@@ -64,5 +65,8 @@ export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   stopEditing() {
     this.isEditing = false;
+    if (this.title.value) {
+      this.todo.title = this.title.value;
+    }
   }
 }
