@@ -24,6 +24,7 @@ import { Subscription } from "rxjs";
 export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() todo!: TodoItem;
   @Output() updateTodoEvent = new EventEmitter<TodoItem>();
+  @Output() deleteTodoEvent = new EventEmitter<TodoItem>();
   @ViewChild("editInput") editInput!: ElementRef;
 
   isChecked = new FormControl(false);
@@ -61,6 +62,10 @@ export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   onTitleDoubleClick() {
     this.isEditing = true;
+  }
+
+  onDelete() {
+    this.deleteTodoEvent.emit(this.todo);
   }
 
   stopEditing() {

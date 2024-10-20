@@ -1,13 +1,23 @@
+.todo-item-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 .todo-item {
     display: flex;
     gap: 1rem;
     background-color: #f2f0f0;
     padding: 1rem;
+    flex: 1;
 }
 
 .completed {
     text-decoration: line-through;
     text-decoration-thickness: 0.15rem;
+}
+
+.todo-text {
+    cursor: pointer;
 }
 
 .fullscreen-button {

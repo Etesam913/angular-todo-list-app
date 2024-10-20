@@ -52,6 +52,17 @@ export class TodoListComponent {
     }
   }
 
+  deleteTodo(todoToDelete: TodoItem) {
+    const indexOfTodo = this.todos.findIndex(
+      ({ id }) => id === todoToDelete.id,
+    );
+    const remainingTodos = this.todos
+      .slice(0, indexOfTodo)
+      .concat(this.todos.slice(indexOfTodo + 1, this.todos.length));
+    console.log({ remainingTodos });
+    this.todos = remainingTodos;
+  }
+
   handleNewTodoSubmit() {
     if (
       this.newTodoForm.status === "VALID" &&

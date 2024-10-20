@@ -1,17 +1,25 @@
-<li class="todo-item">
-    <input type="checkbox" [formControl]="isChecked" />
+<li class="todo-item-container">
+    <div class="todo-item">
+        <input type="checkbox" [formControl]="isChecked" />
 
-    @if (isEditing) {
-        <input
-            #editInput
-            type="text"
-            [formControl]="title"
-            (blur)="stopEditing()"
-        />
-    } @else {
-        <h3 [class.completed]="todo.checked" (dblclick)="onTitleDoubleClick()">
-            {{ todo.title }}
-        </h3>
-    }
-    <button class="fullscreen-button">fullscreen</button>
+        @if (isEditing) {
+            <input
+                #editInput
+                type="text"
+                [formControl]="title"
+                (blur)="stopEditing()"
+            />
+        } @else {
+            <h3
+                class="todo-text"
+                [class.completed]="todo.checked"
+                (dblclick)="onTitleDoubleClick()"
+            >
+                {{ todo.title }}
+            </h3>
+        }
+        <button class="fullscreen-button">fullscreen</button>
+    </div>
+
+    <button (click)="onDelete()">delete</button>
 </li>

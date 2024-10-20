@@ -4,7 +4,10 @@
             <app-todo-item
                 [todo]="todo"
                 (updateTodoEvent)="updateTodo($event)"
+                (deleteTodoEvent)="deleteTodo($event)"
             />
+        } @empty {
+            <li>There are no todos here. Create a todo using the form 👇</li>
         }
     </ul>
     <form
