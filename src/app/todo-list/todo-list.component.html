@@ -12,14 +12,21 @@
         (ngSubmit)="handleNewTodoSubmit()"
     >
         <fieldset>
-            <label for="todo-title">Todo Title:</label>
-            <input type="text" id="todo-title" formControlName="todoTitle" />
+            <label for="new-todo-title">Todo Title:</label>
+            <input
+                type="text"
+                id="new-todo-title"
+                formControlName="todoTitle"
+            />
         </fieldset>
         <fieldset>
-            <label for="todo-description">Todo Description:</label>
-            <textarea id="todo-description" formControlName="todoDescription">
+            <label for="new-todo-description">Todo Description:</label>
+            <textarea
+                id="new-todo-description"
+                formControlName="todoDescription"
+            >
             </textarea>
         </fieldset>
-        <button type="submit">Add Todo</button>
+        <button id="new-todo-submit" type="submit">Add Todo</button>
     </form>
 </div>
