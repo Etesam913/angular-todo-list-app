@@ -1,0 +1,10 @@
+.todo-dialog-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: min(90vw, 35rem);
+}
+
+.completed {
+    text-decoration: line-through;
+}

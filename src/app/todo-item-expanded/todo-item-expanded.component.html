@@ -1,1 +1,15 @@
-<p>todo-item-{{ id }}</p>
+<dialog #dialogElement class="todo-dialog-body">
+    @if (todo) {
+        <h2 [class.completed]="todo.checked">
+            {{ todo.title }}
+        </h2>
+        <section>
+            <h3>Description:</h3>
+            <p>{{ todo.description }}</p>
+        </section>
+    } @else {
+        <p>error: todo not found</p>
+    }
+
+    <button [routerLink]="'/'">close</button>
+</dialog>

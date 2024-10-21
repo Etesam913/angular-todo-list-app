@@ -32,6 +32,10 @@ export class TodoListService {
     return this.todos;
   }
 
+  getTodoById(id: string): TodoItem | undefined {
+    return this.todos.find((todo) => todo.id === id);
+  }
+
   updateTodo(updatedTodo: TodoItem) {
     const indexOfTodo = this.todos.findIndex(({ id }) => id === updatedTodo.id);
     if (indexOfTodo !== -1) {
