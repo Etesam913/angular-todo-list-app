@@ -1,31 +1,30 @@
 import {
   AfterViewChecked,
-  AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
+  inject,
   Input,
   OnDestroy,
   OnInit,
-  Output,
   ViewChild,
 } from "@angular/core";
-import { TodoItem } from "../todo-list/todo-list.component";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { Subscription } from "rxjs";
+import { RouterLink } from "@angular/router";
+import { TodoItemExpandedComponent } from "../todo-item-expanded/todo-item-expanded.component";
+import { TodoItem, TodoListService } from "../todo-list.service";
 
 @Component({
   selector: "app-todo-item",
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink, TodoItemExpandedComponent],
   templateUrl: "./todo-item.component.html",
   styleUrl: "./todo-item.component.css",
 })
 export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() todo!: TodoItem;
-  @Output() updateTodoEvent = new EventEmitter<TodoItem>();
-  @Output() deleteTodoEvent = new EventEmitter<TodoItem>();
   @ViewChild("editInput") editInput!: ElementRef;
+  private todoListService = inject(TodoListService);
 
   isChecked = new FormControl(false);
   title = new FormControl("");
@@ -41,7 +40,8 @@ export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
       (newChecked) => {
         if (newChecked !== null) {
           this.todo.checked = newChecked;
-          this.updateTodoEvent.emit(this.todo);
+          // this.updateTodoEvent.emit(this.todo);
+          this.todoListService.updateTodo(this.todo);
         }
       },
     );
@@ -65,7 +65,7 @@ export class TodoItemComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   onDelete() {
-    this.deleteTodoEvent.emit(this.todo);
+    this.todoListService.deleteTodo(this.todo);
   }
 
   stopEditing() {

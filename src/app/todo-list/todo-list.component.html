@@ -1,11 +1,7 @@
 <div class="todo-list-container">
     <ul class="todo-list">
-        @for (todo of todos; track todo.id) {
-            <app-todo-item
-                [todo]="todo"
-                (updateTodoEvent)="updateTodo($event)"
-                (deleteTodoEvent)="deleteTodo($event)"
-            />
+        @for (todo of todoListService.getTodos(); track todo.id) {
+            <app-todo-item [todo]="todo" />
         } @empty {
             <li>There are no todos here. Create a todo using the form 👇</li>
         }

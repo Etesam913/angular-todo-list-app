@@ -18,7 +18,9 @@
                 {{ todo.title }}
             </h3>
         }
-        <button class="fullscreen-button">fullscreen</button>
+        <button class="expand-button" [routerLink]="['/todo', todo.id]">
+            expand
+        </button>
     </div>
 
     <button (click)="onDelete()">delete</button>
