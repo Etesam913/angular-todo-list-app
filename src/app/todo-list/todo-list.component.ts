@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { TodoListService } from "../todo-list.service";
+import { animate, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: "app-todo-list",
@@ -14,6 +15,18 @@ import { TodoListService } from "../todo-list.service";
   imports: [TodoItemComponent, ReactiveFormsModule],
   templateUrl: "./todo-list.component.html",
   styleUrl: "./todo-list.component.css",
+  animations: [
+    trigger("addAndRemoveTodoAnimation", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("250ms ease-in-out", style({ opacity: 1 })),
+      ]),
+      transition(":leave", [
+        style({ opacity: 1 }),
+        animate("250ms ease-in-out", style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class TodoListComponent {
   todoListService = inject(TodoListService);
