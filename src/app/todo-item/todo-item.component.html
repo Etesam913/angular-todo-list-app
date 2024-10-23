@@ -18,12 +18,15 @@
                 {{ todo.title }}
             </h3>
         }
-        <button class="expand-button" [routerLink]="['/todo', todo.id]">
+        <app-styled-button
+            class="expand-button"
+            [routerLink]="['/todo', todo.id]"
+        >
             expand
-        </button>
+        </app-styled-button>
     </div>
 
-    <button (click)="onDelete()" data-testid="delete-todo-button">
+    <app-styled-button (click)="onDelete()" data-testid="delete-todo-button">
         delete
-    </button>
+    </app-styled-button>
 </li>

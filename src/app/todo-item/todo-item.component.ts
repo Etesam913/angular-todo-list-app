@@ -13,11 +13,17 @@ import { Subscription } from "rxjs";
 import { RouterLink } from "@angular/router";
 import { TodoItemExpandedComponent } from "../todo-item-expanded/todo-item-expanded.component";
 import { TodoItem, TodoListService } from "../todo-list.service";
+import { StyledButtonComponent } from "../styled-button/styled-button.component";
 
 @Component({
   selector: "app-todo-item",
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, TodoItemExpandedComponent],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    TodoItemExpandedComponent,
+    StyledButtonComponent,
+  ],
   templateUrl: "./todo-item.component.html",
   styleUrl: "./todo-item.component.css",
 })
