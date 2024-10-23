@@ -8,11 +8,12 @@ import {
 import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { TodoListService } from "../todo-list.service";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { DogGeneratorComponent } from "../dog-generator/dog-generator.component";
 
 @Component({
   selector: "app-todo-list",
   standalone: true,
-  imports: [TodoItemComponent, ReactiveFormsModule],
+  imports: [TodoItemComponent, ReactiveFormsModule, DogGeneratorComponent],
   templateUrl: "./todo-list.component.html",
   styleUrl: "./todo-list.component.css",
   animations: [

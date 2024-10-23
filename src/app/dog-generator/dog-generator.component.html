@@ -1,1 +1,11 @@
-<p>dog-generator works!</p>
+<div class="dog-container">
+    @if (imageData$ | async; as imageData) {
+        <img [src]="imageData.message" alt="image of a dog" />
+    } @else {
+        <div>you have not generated a dog yet</div>
+    }
+
+    <app-styled-button (click)="onDogGenerate()">
+        Generate Image of Dog
+    </app-styled-button>
+</div>
